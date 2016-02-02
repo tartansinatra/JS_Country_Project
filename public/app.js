@@ -8,6 +8,8 @@ window.onload = function(){
 
   request.open('GET', url);
 
+
+
   var displayDropdown = function(countryNameList) {
     for (var i = 0; i < countryNameList.length; i++) {
       
@@ -23,12 +25,13 @@ window.onload = function(){
     if (request.status === 200) {
       console.log("got the data");
       countriesData = JSON.parse(request.responseText);
-      console.log(countriesData[0]['name']);
+      
       
       for (var i = 0; i < countriesData.length; i++) {
         countryNameList.push(countriesData[i].name);
       };
       displayDropdown(countryNameList);
+      displayCountry(localStorage.getItem('Last country'));
     }
   }
 
@@ -52,6 +55,8 @@ window.onload = function(){
     var population = countriesData[index]['population'];
 
     console.log(name, capital, population);
+
+    localStorage.setItem('Last country', index)
 
     var blockquote = document.createElement('blockquote')
     blockquote.innerText = (name + ' - ' + capital + ' - ' + population)
