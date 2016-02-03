@@ -21,6 +21,10 @@ window.onload = function(){
     };
   }
 
+
+
+
+
   request.onload = function() {
     if (request.status === 200) {
       console.log("got the data");
@@ -55,14 +59,37 @@ window.onload = function(){
     var population = countriesData[index]['population'];
 
     console.log(name, capital, population);
-
     localStorage.setItem('Last country', index)
 
-    var blockquote = document.createElement('blockquote')
-    blockquote.innerText = (name + ' - ' + capital + ' - ' + population)
-
-    section.appendChild(blockquote)
+    var blockquote = document.createElement('blockquote');
+    blockquote.innerText = ("Country: " +name);
+    section.appendChild(blockquote);
+    var blockquote = document.createElement('blockquote');
+    blockquote.innerText = ("Capital: " +capital);
+    section.appendChild(blockquote);
+    var blockquote = document.createElement('blockquote');
+    blockquote.innerText = ("Population: " +Number(population).toLocaleString() );
+    section.appendChild(blockquote);
   }
+ 
+
+  // var borderCountries = function(index){
+  //   var borderCountryArray = countriesData[index]['borders'];
+  
+  //  for loop 
+  //  for each item in the borderCountryArray
+  // return this.value
+  //  this.value = threeDigitCode
+  // if threeDigitCode === 'countriesData.alpha3code', return this.index  
+  // displayCountry(index);
+  
+  //   for (var i = 0, i < borderCountryArray.length; i++) {
+  //       console.log([i]);
+  //     }
+  // };
+
+
+
 
   request.send(null);
 
