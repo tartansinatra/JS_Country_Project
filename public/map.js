@@ -5,12 +5,12 @@ var Map = function(latLng, zoom){
     zoom: zoom
   });
 
-  this.addMarker = function(latLng, title, icon){
+  this.addMarker = function(latLng){
     var marker = new google.maps.Marker({
       position: latLng,
       map: this.googleMap,
-      title: title,
-      icon: icon
+      // title: title,
+      // icon: icon
     });
     return marker;
   }

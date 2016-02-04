@@ -59,6 +59,19 @@ window.onload = function(){
     var name = countriesData[index]['name'];
     var capital = countriesData[index]['capital'];
     var population = countriesData[index]['population'];
+    var latlng = countriesData[index]['latlng'];
+    var center = {
+      lat: latlng[0],
+      lng: latlng[1]
+      }
+
+    map.googleMap.setCenter(center)
+
+    map.addMarker(center, "X");
+
+
+
+
 
     console.log(name, capital, population);
     localStorage.setItem('Last country', index)
