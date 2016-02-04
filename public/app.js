@@ -3,12 +3,13 @@ window.onload = function(){
   var url = 'https://restcountries.eu/rest/v1';
   var request = new XMLHttpRequest();
   var countryNameList = [];
-  var dropdown = document.getElementById('Countrylist')
-  var section = document.getElementById('info')
+  var dropdown = document.getElementById('Countrylist');
+  var section = document.getElementById('info');
+  var center = {lat: -34.397, lng: 150.644};
+  var zoom = 8;
+  var map = new Map(center, zoom);
 
   request.open('GET', url);
-
-
 
   var displayDropdown = function(countryNameList) {
     for (var i = 0; i < countryNameList.length; i++) {
@@ -49,6 +50,7 @@ window.onload = function(){
         var countryIndex = index;
         console.log(countryIndex);
         displayCountry(countryIndex);
+       
       }
     }
   }
@@ -70,14 +72,32 @@ window.onload = function(){
     var blockquote = document.createElement('blockquote');
     blockquote.innerText = ("Population: " +Number(population).toLocaleString() );
     section.appendChild(blockquote);
+
+    borderCountries(index);
   }
  
 
-  // var borderCountries = function(index){
-  //   var borderCountryArray = countriesData[index]['borders'];
-  
-  //  for loop 
-  //  for each item in the borderCountryArray
+  var borderCountries = function(index){
+    var borderCountryArray = countriesData[index]['borders'];
+    if(borderCountryArray.length === 0 ){
+      return;
+    }
+
+    // console.log(borderCountryArray);
+    
+    // for (var x=0; x<countriesData.length; x++){
+    //   for (var i = 0; i < borderCountryArray.length; i++) {
+
+    //     console.log("borderCountryArray[i]=" + borderCountryArray[i]);
+    //     console.log("countriesData[x].alpha3code=" + countriesData[x].alpha3code);
+
+    //     if (borderCountryArray[i] === countriesData[x].alpha3code ){
+    //       console.log("border country found");
+    //       console.log(countriesData[x]);
+    //     }
+    //   }
+    // }
+
   // return this.value
   //  this.value = threeDigitCode
   // if threeDigitCode === 'countriesData.alpha3code', return this.index  
@@ -86,7 +106,7 @@ window.onload = function(){
   //   for (var i = 0, i < borderCountryArray.length; i++) {
   //       console.log([i]);
   //     }
-  // };
+   };
 
 
 
